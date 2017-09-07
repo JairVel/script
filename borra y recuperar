@@ -1,0 +1,31 @@
+#!/bin/bash
+while :
+do
+echo "Elija  una opción"
+echo "1. Eliminar"
+echo "2. Recuperar"
+echo "3. Salir"
+echo -n "Seleccione una opción [1-3]"
+read op
+case $op in
+1) echo "Eliminar";
+mkdir /var/tmp/.basura	#creamos una carpeta en el directorio /var/tmp llamada  .basura (sera oculta)
+echo 'Introduzca nombre de fichero a eliminar:'
+read var1
+mv  $var1  /var/tmp/.basura
+echo 'Borrado';;
+
+2) echo "Recuperar";
+ls /var/tmp/.basura	#Mostramos los ficheros y directorios que hay en el directorio basura
+echo 'Introduzca nombre de fichero a recuperar:'
+read var1
+mv /var/tmp/.basura/$var1  . 	#Se mueve el fichero de basura al diretorio domicilio
+echo 'Recuperado';;
+
+3)echo  "Bye";
+exit 1;;
+*) echo "$op no es válida";
+echo "Presiona una tecla para continuar...";
+read foo;
+esac
+done
