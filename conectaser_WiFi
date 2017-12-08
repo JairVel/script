@@ -1,0 +1,9 @@
+#!/bin/bash
+echo "Esta es la lista de redes disponibles"
+nmcli dev wifi list
+echo "Indica el nombre de la red para conectar"
+read red
+echo "Ingresa la contraseña"
+read con
+nmcli dev wifi con "$red" password "$con"
+echo "conectando"
