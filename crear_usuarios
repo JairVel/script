@@ -1,0 +1,29 @@
+#!/bin/bash
+
+echo -e "\n"
+echo "Ingrese el nombre del usuario: "
+read nombre
+echo -e "\n"
+echo "Ingrese el home directoy (ejemplo /home/$nombre): "
+read home
+echo "Ingrese el grupo (ejemplo 1000): "
+read grupo
+echo "Ingrese el shell a utilizar (ejemplo /bin/bash): "
+read shell
+clear
+echo "Los datos ingresados son los siguientes:"
+echo "********"
+echo -e "\n"
+echo "Nombre del usuario: $nombre"
+echo "Shell por defecto : $shell"
+echo "Directorio home: $home"
+echo "Grupo del usuario: $grupo"
+echo 
+echo "Si los datos son correctos pulse ENTER"
+read
+useradd -d /home/$nombre -g $grupo -m -s $shell $nombre
+echo "Ingrese una contraseña para $nombre"
+passwd $nombre
+echo -e "\n"
+echo "El usuario '$nombre' fue creado"
+echo "bye"
